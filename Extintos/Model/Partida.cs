@@ -3,28 +3,27 @@ using Extintos.Enumeration;
 using Extintos.Model;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 namespace Extintos
 {
     internal class Partida
     {
-        public int IdPartida { get; set; }
+        
+        //DEFINIÇÕES DA CLASSE E PRIORIDADES 
+        public int IdPartida { get; set; } 
         public string Nome { get; set; }
-        public DateTime Data { get; set; }
+        public DateTime Data { get; set; }  
         public char Status { get; set; }
        // public int Turno { get; set; }
-        public List<Jogador> Jogadores { get; set; }
+        public List<Jogador> Jogadores { get; set; } 
         
         
 
         //  public List<Turno> Turnos { get; set; }
 
+        //LÓGICA DO DATA ACCESS
+        //O fluxo é: Camada de Interface (UI) -> Classe Partida (Model) -> Classe Jogo (Service)
         public static List<Partida> ListarPartidas(char Status)
         {
             string status = Convert.ToString(Status);
@@ -101,8 +100,13 @@ namespace Extintos
             );
         }
 
+        
         public static string IniciarPartida(int idJogador, string senhaJogador, int idPartida)
-
+        /*
+         Parte central da lógica do código.
+         Ele combina a ação (iniciar) com a consulta (verificar status)
+         e formata uma mensagem para o usuário.
+        */
         {
       
             string retornoEntrar = Jogo.Iniciar(idJogador, senhaJogador);
@@ -113,7 +117,7 @@ namespace Extintos
 
             Dado dadoAtual = (Dado)Enum.Parse(typeof(Dado), verificacao.faceDado);
             
-            //boto um trim ? talvez 
+            //Boto um trim ? talvez 
 
             string mensagemInicio = $"O Jogador: {Jogador.BuscaPeloId(idJogador)} iniciou a partida!\n" +
                                     $"O primeiro a jogar é: {Jogador.BuscaPeloId(verificacao.idJogador)}\n" +

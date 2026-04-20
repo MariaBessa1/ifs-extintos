@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Importações e namespaces utilizados no código
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,12 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Draft;
 
-
 namespace Extintos
 {
-    public partial class Form1 : Form
+
+    public partial class Form1 : Form //declaração de herança pelo windows form 
     {
-        public Form1()
+        public Form1() //construtor do forms
         {
             InitializeComponent();
             lblVersao.Text = Jogo.versao;
@@ -26,7 +27,7 @@ namespace Extintos
         }
         
 
-        private void btnCriarPartida_Click(object sender, EventArgs e)
+        private void btnCriarPartida_Click(object sender, EventArgs e) //evento de clique do botão criar partida
         {
             txtNomedoGrupo.Text = "Extintos";
             string nomePartida = txtNomedaPartida.Text;
@@ -48,16 +49,25 @@ namespace Extintos
             this.Hide();
         }
 
-        private void btnIrPartidaExistente_Click(object sender, EventArgs e)
+        private void btnIrPartidaExistente_Click(object sender, EventArgs e) //evento de clique do botão ir para partida existente
         {
             Forms.FormLobby.Show();
             this.Hide();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) //evento de carregamento do forms
         {
 
         }
-    }
-    }
 
+        private void txtNomedaPartida_TextChanged(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void txtSenhadaPartida_TextChanged(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    }

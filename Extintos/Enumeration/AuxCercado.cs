@@ -6,7 +6,7 @@ namespace Extintos.Enumeration
     {
         public Cercados Cercados  { get; set; }
         
-        public List<Dinossauro> Dinossaurios { get; } =  new List<Dinossauro>();
+        public List<Dinossauro> Dinossauros { get; } =  new List<Dinossauro>();
 
 
         public AuxCercado(Cercados cercados)

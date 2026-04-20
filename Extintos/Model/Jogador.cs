@@ -1,32 +1,38 @@
 ﻿using Draft;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Extintos.Enumeration;
 
 namespace Extintos.Model
 {
+    // Classe que representa um jogador no jogo, contendo propriedades e métodos relacionados ao jogador
     internal class Jogador
-
     {
         public int IdJogador { get; set; }
 
-        public string NomeJogador { get; set; } // limitar 20 caracteres 
-
+        public string NomeJogador { get; set; } 
+        
         public string Senha { get; set; }
 
         public int Pontuacao { get; set; }
+        
+        
+        public int idPartida { get; set; } 
+        
+        public List<AuxCercado> meusCercados { get; set; } = CercadosExtension.CercadoAuxLista(); 
+         /*
+         lista de cercados que o jogador possui, pode ser usada para armazenar os cercados 
+         conquistados pelo jogador durante o jogo e facilitar a gestão desses cercados.
+         */
 
-        public int idPartida { get; set; }
 
-        public List<AuxCercado> meusCercados { get; set; } = CercadosExtension.CercadoAuxLista();
-
-
-        public static Jogador EntrarNaPartida(int idPartida, string nomeJogador, string senhaPartida)
+        public static Jogador EntrarNaPartida(int idPartida, string nomeJogador, string senhaPartida) 
+            /*
+            método estático para permitir que um jogador entre em uma partida existente,
+            recebendo o id da partida, o nome do jogador e a senha da partida como parâmetros.
+            O método pode retornar um objeto do tipo Jogador com as informações do jogador que entrou na partida,
+            ou lançar uma exceção caso haja algum erro durante o processo de entrada.
+            */
         {
             
             string retornoEntrar = Jogo.Entrar(idPartida, nomeJogador, senhaPartida);
@@ -75,7 +81,7 @@ namespace Extintos.Model
         public void ColocarDinossauro(Dinossauro dino, Cercados cerca)
         {
             AuxCercado cercado = meusCercados.Find(c => c.Cercados.Equals(cerca));
-            cercado.Dinossaurios.Add(dino);
+            cercado.Dinossauros.Add(dino);
         }
         
     }

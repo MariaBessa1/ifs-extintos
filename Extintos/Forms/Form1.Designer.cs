@@ -23,8 +23,8 @@
         #region Código gerado pelo Windows Form Designer
 
         /// <summary>
-        /// Método necessário para suporte ao Designer - não modifique 
-        /// o conteúdo deste método com o editor de código.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -46,49 +46,54 @@
             this.lblNomedaPartida.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNomedaPartida.AutoSize = true;
             this.lblNomedaPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomedaPartida.Location = new System.Drawing.Point(469, 156);
+            this.lblNomedaPartida.Location = new System.Drawing.Point(352, 127);
+            this.lblNomedaPartida.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNomedaPartida.Name = "lblNomedaPartida";
-            this.lblNomedaPartida.Size = new System.Drawing.Size(134, 18);
+            this.lblNomedaPartida.Size = new System.Drawing.Size(115, 15);
             this.lblNomedaPartida.TabIndex = 13;
             this.lblNomedaPartida.Text = "Nome da Partida";
             // 
             // txtNomedaPartida
             // 
             this.txtNomedaPartida.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtNomedaPartida.Location = new System.Drawing.Point(469, 187);
-            this.txtNomedaPartida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNomedaPartida.Location = new System.Drawing.Point(352, 152);
+            this.txtNomedaPartida.Margin = new System.Windows.Forms.Padding(2);
             this.txtNomedaPartida.Name = "txtNomedaPartida";
-            this.txtNomedaPartida.Size = new System.Drawing.Size(135, 22);
+            this.txtNomedaPartida.Size = new System.Drawing.Size(102, 20);
             this.txtNomedaPartida.TabIndex = 14;
+            this.txtNomedaPartida.TextChanged += new System.EventHandler(this.txtNomedaPartida_TextChanged);
             // 
             // lblSenhadaPartida
             // 
             this.lblSenhadaPartida.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSenhadaPartida.AutoSize = true;
             this.lblSenhadaPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSenhadaPartida.Location = new System.Drawing.Point(469, 230);
+            this.lblSenhadaPartida.Location = new System.Drawing.Point(352, 187);
+            this.lblSenhadaPartida.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSenhadaPartida.Name = "lblSenhadaPartida";
-            this.lblSenhadaPartida.Size = new System.Drawing.Size(136, 18);
+            this.lblSenhadaPartida.Size = new System.Drawing.Size(118, 15);
             this.lblSenhadaPartida.TabIndex = 15;
             this.lblSenhadaPartida.Text = "Senha da Partida";
             // 
             // txtSenhadaPartida
             // 
             this.txtSenhadaPartida.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSenhadaPartida.Location = new System.Drawing.Point(469, 261);
-            this.txtSenhadaPartida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSenhadaPartida.Location = new System.Drawing.Point(352, 212);
+            this.txtSenhadaPartida.Margin = new System.Windows.Forms.Padding(2);
             this.txtSenhadaPartida.Name = "txtSenhadaPartida";
-            this.txtSenhadaPartida.Size = new System.Drawing.Size(135, 22);
+            this.txtSenhadaPartida.Size = new System.Drawing.Size(102, 20);
             this.txtSenhadaPartida.TabIndex = 16;
+            this.txtSenhadaPartida.TextChanged += new System.EventHandler(this.txtSenhadaPartida_TextChanged);
             // 
             // lblNomedoGrupo
             // 
             this.lblNomedoGrupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNomedoGrupo.AutoSize = true;
             this.lblNomedoGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomedoGrupo.Location = new System.Drawing.Point(475, 303);
+            this.lblNomedoGrupo.Location = new System.Drawing.Point(356, 246);
+            this.lblNomedoGrupo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNomedoGrupo.Name = "lblNomedoGrupo";
-            this.lblNomedoGrupo.Size = new System.Drawing.Size(129, 18);
+            this.lblNomedoGrupo.Size = new System.Drawing.Size(108, 15);
             this.lblNomedoGrupo.TabIndex = 17;
             this.lblNomedoGrupo.Text = "Nome do Grupo";
             // 
@@ -97,10 +102,10 @@
             this.txtNomedoGrupo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNomedoGrupo.BackColor = System.Drawing.SystemColors.Menu;
             this.txtNomedoGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomedoGrupo.Location = new System.Drawing.Point(469, 330);
-            this.txtNomedoGrupo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNomedoGrupo.Location = new System.Drawing.Point(352, 268);
+            this.txtNomedoGrupo.Margin = new System.Windows.Forms.Padding(2);
             this.txtNomedoGrupo.Name = "txtNomedoGrupo";
-            this.txtNomedoGrupo.Size = new System.Drawing.Size(135, 24);
+            this.txtNomedoGrupo.Size = new System.Drawing.Size(102, 21);
             this.txtNomedoGrupo.TabIndex = 18;
             this.txtNomedoGrupo.Text = "Extintos";
             this.txtNomedoGrupo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -110,10 +115,10 @@
             this.btnCriarPartida.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCriarPartida.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnCriarPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCriarPartida.Location = new System.Drawing.Point(371, 385);
-            this.btnCriarPartida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCriarPartida.Location = new System.Drawing.Point(278, 313);
+            this.btnCriarPartida.Margin = new System.Windows.Forms.Padding(2);
             this.btnCriarPartida.Name = "btnCriarPartida";
-            this.btnCriarPartida.Size = new System.Drawing.Size(152, 95);
+            this.btnCriarPartida.Size = new System.Drawing.Size(114, 77);
             this.btnCriarPartida.TabIndex = 19;
             this.btnCriarPartida.Text = "Criar Partida";
             this.btnCriarPartida.UseVisualStyleBackColor = false;
@@ -122,9 +127,10 @@
             // lblIdGerado
             // 
             this.lblIdGerado.AutoSize = true;
-            this.lblIdGerado.Location = new System.Drawing.Point(591, 555);
+            this.lblIdGerado.Location = new System.Drawing.Point(443, 451);
+            this.lblIdGerado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIdGerado.Name = "lblIdGerado";
-            this.lblIdGerado.Size = new System.Drawing.Size(0, 16);
+            this.lblIdGerado.Size = new System.Drawing.Size(0, 13);
             this.lblIdGerado.TabIndex = 21;
             // 
             // lblDraftosaurus
@@ -132,9 +138,10 @@
             this.lblDraftosaurus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblDraftosaurus.AutoSize = true;
             this.lblDraftosaurus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDraftosaurus.Location = new System.Drawing.Point(363, 64);
+            this.lblDraftosaurus.Location = new System.Drawing.Point(272, 52);
+            this.lblDraftosaurus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDraftosaurus.Name = "lblDraftosaurus";
-            this.lblDraftosaurus.Size = new System.Drawing.Size(364, 46);
+            this.lblDraftosaurus.Size = new System.Drawing.Size(293, 37);
             this.lblDraftosaurus.TabIndex = 22;
             this.lblDraftosaurus.Text = "DRAFTOSAURUS";
             // 
@@ -142,10 +149,9 @@
             // 
             this.lblVersao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblVersao.AutoSize = true;
-            this.lblVersao.Location = new System.Drawing.Point(1008, 576);
-            this.lblVersao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVersao.Location = new System.Drawing.Point(756, 468);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(0, 16);
+            this.lblVersao.Size = new System.Drawing.Size(0, 13);
             this.lblVersao.TabIndex = 23;
             // 
             // btnIrPartidaExistente
@@ -153,10 +159,10 @@
             this.btnIrPartidaExistente.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIrPartidaExistente.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnIrPartidaExistente.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIrPartidaExistente.Location = new System.Drawing.Point(555, 385);
-            this.btnIrPartidaExistente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnIrPartidaExistente.Location = new System.Drawing.Point(416, 313);
+            this.btnIrPartidaExistente.Margin = new System.Windows.Forms.Padding(2);
             this.btnIrPartidaExistente.Name = "btnIrPartidaExistente";
-            this.btnIrPartidaExistente.Size = new System.Drawing.Size(149, 95);
+            this.btnIrPartidaExistente.Size = new System.Drawing.Size(112, 77);
             this.btnIrPartidaExistente.TabIndex = 24;
             this.btnIrPartidaExistente.Text = "Ir para o lobby";
             this.btnIrPartidaExistente.UseVisualStyleBackColor = false;
@@ -164,9 +170,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 615);
+            this.ClientSize = new System.Drawing.Size(865, 500);
             this.Controls.Add(this.btnIrPartidaExistente);
             this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.lblDraftosaurus);
@@ -178,13 +184,12 @@
             this.Controls.Add(this.lblSenhadaPartida);
             this.Controls.Add(this.txtNomedaPartida);
             this.Controls.Add(this.lblNomedaPartida);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

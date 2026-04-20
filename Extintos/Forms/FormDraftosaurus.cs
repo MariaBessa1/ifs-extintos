@@ -1,14 +1,9 @@
-﻿using Draft;
+﻿//todos os import
+using Draft;
 using Extintos.Enumeration;
 using Extintos.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -16,10 +11,17 @@ namespace Extintos
 {
     public partial class FormDraftosaurus : Form
     {
+        //declaração de variáveis de nivel de classe que existem enquanto o form estiver aberto
+        //é a memória do formulário.
         private string _retornoEntrar;
-        private Jogador _dadosJogador;
+        private Jogador _dadosJogador; //armazena senha e id do jogador e partida
 
-        public FormDraftosaurus()
+        public FormDraftosaurus() 
+            /*
+             construtor padrão, faz o desenho do form
+             assim que se clica em criar partida ou entrar no form anterior, esse form recebe os dados e 
+             construa o restante já com os dados obtidos anteriormente
+                 */
         {
 
             InitializeComponent();
@@ -44,8 +46,12 @@ namespace Extintos
             string retornoMao = Jogo.ExibirMao(_dadosJogador.IdJogador, _dadosJogador.Senha);
             string[] linhasRetorno = retornoMao.Replace("\r", "")
                 .Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-            //esse new[] ta criando um novo array pra guardar por linha, pq eles vem tudo na mesma linha
+            /*
+             esse new[] ta criando um novo array pra guardar por linha, pq eles vem tudo na mesma linha
+             Replace -> remove os char invisíveis de quebra de linha
+             Split \n transforma a string em uma lista de linhas
+             Split , quebra a linha em colunas
+             */
             List<AuxDinossauro> dinossaurosJogador = new List<AuxDinossauro>();
 
 
@@ -79,13 +85,15 @@ namespace Extintos
 
         public void btnJogar_Click(object sender, EventArgs e)
         {
-            var verificacao = Partida.VerificaPartida(_dadosJogador.idPartida);
-            if (verificacao.idJogador == _dadosJogador.IdJogador)
+                //verifica se o turno atual é do jogador 
+                var verificacao = Partida.VerificaPartida(_dadosJogador.idPartida);
+                 if (verificacao.idJogador == _dadosJogador.IdJogador)
             {
                 List<Cercados> todos = CercadosExtension.cercadosLista();
 
                 Dado dadoAtual = (Dado)Enum.Parse(typeof(Dado), verificacao.faceDado);
 
+                //validação de regras do cercado a partir do dado
                 List<Cercados> cercadosOk = dadoAtual.ValidaCercados();
 
                 string dinoEscolhido = txtDino.Text.ToUpper();
@@ -183,6 +191,21 @@ namespace Extintos
                 
             txtVerificarPartida.Visible = true;
             lblDescricaoVerificacao.Visible = true;
+        }
+
+        private void lblNomeDino_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void lblDescricaoVerificacao_Click(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void FormDraftosaurus_Load(object sender, EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

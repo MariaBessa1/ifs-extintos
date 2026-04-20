@@ -1,13 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static Extintos.Enumeration.DadoFace; // pq o rinder gerou isso ?
-using Extintos;
 
-namespace Extintos
+namespace Extintos.Enumeration
 {
    
     [AttributeUsage(AttributeTargets.Field)]
@@ -33,17 +27,26 @@ namespace Extintos
     
     public enum Dinossauro
     {
+        
+        //comentário repetido a seguir usado somente para retirar o aviso automático do rider
+        
         [DinossauroInfo("(BR) Braquiossauro", "Roxo", "BR")]
+        // ReSharper disable once InconsistentNaming
         BR,
         [DinossauroInfo("(EP) Espinossauro", "Laranja","EP")]
+        // ReSharper disable once InconsistentNaming
         EP,
         [DinossauroInfo("(ET) Estegossauro","Azul", "ET")]
+        // ReSharper disable once InconsistentNaming
         ET,
         [DinossauroInfo("(PA) Parasaurolófo", "Verde","PA")]
+        // ReSharper disable once InconsistentNaming
         PA,
         [DinossauroInfo("(TI) Tiranossauro","Vermelho","TI")]
+        // ReSharper disable once InconsistentNaming
         TI,
         [DinossauroInfo("(TR) Tricerátops", "Amarelo","TR")]
+        // ReSharper disable once InconsistentNaming
         TR
     }
 
