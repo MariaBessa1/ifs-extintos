@@ -122,7 +122,7 @@ namespace Extintos
             string mensagemInicio = $"O Jogador: {Jogador.BuscaPeloId(idJogador)} iniciou a partida!\n" +
                                     $"O primeiro a jogar é: {Jogador.BuscaPeloId(verificacao.idJogador)}\n" +
                                     $"Turno: {verificacao.numeroTurno}\n" +
-                                    $"Face do Dado: {dadoAtual.PegaNome()}\n";
+                                    $"Face do Dado: {dadoAtual.PegaNome()}\n"; //aqui ta a dor de cabeça
             
             
             return mensagemInicio;

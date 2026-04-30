@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSenhaGeradaJogador = new System.Windows.Forms.Label();
             this.bntListaJogadores = new System.Windows.Forms.Button();
             this.lblSenhaGeradaa = new System.Windows.Forms.Label();
@@ -48,10 +48,10 @@
             this.lblSenhaGeradaJogador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSenhaGeradaJogador.AutoSize = true;
             this.lblSenhaGeradaJogador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSenhaGeradaJogador.Location = new System.Drawing.Point(713, 179);
+            this.lblSenhaGeradaJogador.Location = new System.Drawing.Point(707, 179);
             this.lblSenhaGeradaJogador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSenhaGeradaJogador.Name = "lblSenhaGeradaJogador";
-            this.lblSenhaGeradaJogador.Size = new System.Drawing.Size(277, 22);
+            this.lblSenhaGeradaJogador.Size = new System.Drawing.Size(233, 18);
             this.lblSenhaGeradaJogador.TabIndex = 44;
             this.lblSenhaGeradaJogador.Text = "Senha do jogador adicionado:";
             // 
@@ -60,7 +60,7 @@
             this.bntListaJogadores.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.bntListaJogadores.BackColor = System.Drawing.Color.MediumAquamarine;
             this.bntListaJogadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntListaJogadores.Location = new System.Drawing.Point(398, 131);
+            this.bntListaJogadores.Location = new System.Drawing.Point(392, 131);
             this.bntListaJogadores.Name = "bntListaJogadores";
             this.bntListaJogadores.Size = new System.Drawing.Size(141, 31);
             this.bntListaJogadores.TabIndex = 46;
@@ -74,9 +74,9 @@
             this.lblSenhaGeradaa.AutoSize = true;
             this.lblSenhaGeradaa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSenhaGeradaa.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblSenhaGeradaa.Location = new System.Drawing.Point(784, 227);
+            this.lblSenhaGeradaa.Location = new System.Drawing.Point(778, 227);
             this.lblSenhaGeradaa.Name = "lblSenhaGeradaa";
-            this.lblSenhaGeradaa.Size = new System.Drawing.Size(0, 20);
+            this.lblSenhaGeradaa.Size = new System.Drawing.Size(0, 17);
             this.lblSenhaGeradaa.TabIndex = 47;
             // 
             // btnProximo
@@ -84,7 +84,7 @@
             this.btnProximo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnProximo.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnProximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProximo.Location = new System.Drawing.Point(745, 304);
+            this.btnProximo.Location = new System.Drawing.Point(739, 304);
             this.btnProximo.Name = "btnProximo";
             this.btnProximo.Size = new System.Drawing.Size(168, 87);
             this.btnProximo.TabIndex = 49;
@@ -97,7 +97,7 @@
             this.btnCadastrarNovoJogador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCadastrarNovoJogador.BackColor = System.Drawing.Color.MediumAquamarine;
             this.btnCadastrarNovoJogador.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarNovoJogador.Location = new System.Drawing.Point(381, 501);
+            this.btnCadastrarNovoJogador.Location = new System.Drawing.Point(375, 501);
             this.btnCadastrarNovoJogador.Name = "btnCadastrarNovoJogador";
             this.btnCadastrarNovoJogador.Size = new System.Drawing.Size(180, 26);
             this.btnCadastrarNovoJogador.TabIndex = 51;
@@ -110,9 +110,9 @@
             this.lblTituloAddJogadores.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTituloAddJogadores.AutoSize = true;
             this.lblTituloAddJogadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloAddJogadores.Location = new System.Drawing.Point(538, 50);
+            this.lblTituloAddJogadores.Location = new System.Drawing.Point(532, 50);
             this.lblTituloAddJogadores.Name = "lblTituloAddJogadores";
-            this.lblTituloAddJogadores.Size = new System.Drawing.Size(318, 36);
+            this.lblTituloAddJogadores.Size = new System.Drawing.Size(263, 29);
             this.lblTituloAddJogadores.TabIndex = 53;
             this.lblTituloAddJogadores.Text = "Jogadores da Partida";
             // 
@@ -120,9 +120,9 @@
             // 
             this.lblVersao2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblVersao2.AutoSize = true;
-            this.lblVersao2.Location = new System.Drawing.Point(1260, 547);
+            this.lblVersao2.Location = new System.Drawing.Point(1254, 547);
             this.lblVersao2.Name = "lblVersao2";
-            this.lblVersao2.Size = new System.Drawing.Size(0, 16);
+            this.lblVersao2.Size = new System.Drawing.Size(0, 13);
             this.lblVersao2.TabIndex = 54;
             // 
             // btnVoltar2
@@ -142,36 +142,36 @@
             this.dgvJogadores.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvJogadores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvJogadores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvJogadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJogadores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvJogadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvJogadores.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvJogadores.Location = new System.Drawing.Point(346, 168);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJogadores.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvJogadores.Location = new System.Drawing.Point(340, 168);
             this.dgvJogadores.Name = "dgvJogadores";
             this.dgvJogadores.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Teal;
-            this.dgvJogadores.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumAquamarine;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Teal;
+            this.dgvJogadores.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvJogadores.RowTemplate.Height = 24;
             this.dgvJogadores.Size = new System.Drawing.Size(253, 327);
             this.dgvJogadores.TabIndex = 56;
             // 
             // FormJogadores
             // 
-            this.ClientSize = new System.Drawing.Size(1382, 583);
+            this.ClientSize = new System.Drawing.Size(1370, 583);
             this.Controls.Add(this.dgvJogadores);
             this.Controls.Add(this.btnVoltar2);
             this.Controls.Add(this.lblVersao2);

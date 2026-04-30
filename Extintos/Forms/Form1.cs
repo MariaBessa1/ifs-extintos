@@ -62,12 +62,12 @@ namespace Extintos
 
         private void txtNomedaPartida_TextChanged(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         private void txtSenhadaPartida_TextChanged(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+          
         }
     }
     }

@@ -55,10 +55,30 @@ namespace Extintos
 
         private void bntEntrar_Click(object sender, EventArgs e)
         {
-            string retornoEntrar = Partida.IniciarPartida(dadosJogador.IdJogador, dadosJogador.Senha, dadosJogador.idPartida);
+            //teste do GPT pra arrumar essa bosta de botão
+            FormDraftosaurus form = new FormDraftosaurus("", dadosJogador);
+            form.Show();
+            this.Hide();
+
+            Task.Run(() =>
+            {
+                string retorno = Partida.IniciarPartida(
+                    dadosJogador.IdJogador,
+                    dadosJogador.Senha,
+                    dadosJogador.idPartida
+                );
+
+                form.Invoke((MethodInvoker)delegate
+                {
+                    form.DefinirRetorno(retorno);
+                });
+            });
+
+            /*string retornoEntrar = Partida.IniciarPartida(dadosJogador.IdJogador, dadosJogador.Senha, dadosJogador.idPartida);
             FormDraftosaurus FormDraftosaurus = new FormDraftosaurus(retornoEntrar, dadosJogador);
             FormDraftosaurus.Show();
             this.Hide();
+            */
 
 
         }
