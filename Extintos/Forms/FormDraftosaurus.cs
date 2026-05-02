@@ -238,8 +238,20 @@ namespace Extintos
 }
 
 
-     
-    
+
+
+//como aplicar aqui (?) 
+/*
+var estrategias = new Estrategias();
+
+var jogada = estrategias.ReiDaSelva(estado);
+
+*/
 
 
 
+// Mao = ObterMao(),
+//Cercados = CercadosExtension.CercadoAuxLista(),
+// DadoAtual = dadoAtual,
+//NumeroTurno = verificacao.numeroTurno,
+//JogueioDado = verificacao.idJogador == _dadosJogador.IdJogador
