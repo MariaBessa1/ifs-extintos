@@ -48,30 +48,8 @@ namespace Extintos.Model
         //ESTRATEGIA REI DA SELVA-------------------------------------------------------------------------------------------------------------------
         public (Dinossauro, Cercados) ReidaSelva(DecisoesTurno decisoes)
         {
-            var cercadosPermitidos = decisoes.DadoAtual.ValidaCercados();
 
-            foreach (var maoDino in decisoes.Mao)  //para percorrer nossa mão inteira, dino por dino:
-            {
-                if (maoDino.QuantidadeDinossauros == 0) //se não temos nenhum daquele tipo de dino, continuamos para o proximo
-                    continue;
-
-                var dino = maoDino.Dinossauro; //TR, TI, PA.....
-
-                foreach (var cercadoAtual in cercadosPermitidos)   //para percorrer os cercados que podem ser jogagos nesse turno (de acordo com o dado rolado)
-                {
-                    var cercadoEspecifico = decisoes.Cercados.Find(c => c.Cercados == cercadoAtual); //Dinos que estao dentro de um cercado especifico.
-                                                                                                     //Procura o primeiro elemento c onde o Cercados dele é igual ao cercado atual
-                                                                                                     //posso botar esse dino nesse cercado?                                                                  
-                    PossoColocarNoCercado(decisoes, cercadoAtual, dino);
-
-                    if (!PossoColocarNoCercado(decisoes, cercadoAtual, dino))
-                        continue;
-
-                    /*|                   |
-                      | NOSSO FLUXO EBA:: |
-                      |                   |
-                    */
-
+            //PRIMEIRO TURNO::
 
                     if (decisoes.NumeroTurno == 1)
                     {
@@ -106,7 +84,6 @@ namespace Extintos.Model
                             }
                         }
 
-
                         if(!decisoes.JogueioDado &&
                             (decisoes.DadoAtual == Dado.FL||
                              decisoes.DadoAtual == Dado.WC||
@@ -140,24 +117,109 @@ namespace Extintos.Model
                                 }
                             }
                         }
+
                         else //Caso o dado tenha caído PL ou AL
                         {
 
                         }
        
                     }
-                    else // outros turnos
+               //OUTROS TURNOS::
+                    else
                     {
-                        if (decisoes.JogueioDado) //Jogamos o dado
-                        { 
-                          
+                        if (decisoes.JogueioDado) //JOGAMOS O DADO
+                        {
+                            if (TenhoDinoReiDaSelva(decisoes))
+                            {
+                                var cercadoEspecificoRS = decisoes.Cercados.Find(c => c.Cercados == Cercados.RS);
+                                var dinoReiSelva = cercadoEspecificoRS.Dinossauros[0];
 
+
+                                if (PossoColocarNoCercado(decisoes, Cercados.FI, dinoReiSelva))
+                                    return (dinoReiSelva, Cercados.FI);
+
+
+                                if (PossoColocarNoCercado(decisoes, Cercados.PA, dinoReiSelva))
+                                    return (dinoReiSelva, Cercados.PA);
+                            }
+                            else //nao tenho o dino rei da selva
+                            {
+
+                                if (!TemDinoNoCercado(decisoes, Cercados.CD)) //Campina da diferença ta vazio?
+                                {
+                                    foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                    {
+                                        if (d.QuantidadeDinossauros == 0)
+                                            continue;
+
+                                        if (d.Dinossauro == Dinossauro.TI)
+                                            continue;
+
+                                        if (PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro))
+                                            return (d.Dinossauro, Cercados.CD);
+                                    }
+                                }
+                                else  //Campina da diferença nao ta vazio
+                                {
+                                    var cercadoEspecificoCD = decisoes.Cercados.Find(c => c.Cercados == Cercados.CD);
+
+                                    if (cercadoEspecificoCD != null)
+                                    {
+                                        foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+                                            if (d.Dinossauro == Dinossauro.TI)
+                                            {
+                                                if (PossoColocarNoCercado(decisoes, Cercados.IS, d.Dinossauro))
+                                                    return (d.Dinossauro, Cercados.IS);
+
+                                                continue;
+
+                                            }
+
+                                            if (!cercadoEspecificoCD.Dinossauros.Contains(d.Dinossauro) &&
+                                                PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro)) //Temos na mão algum outro dino que dê pra colocar na CD?
+                                            {
+                                                return (d.Dinossauro, Cercados.CD);
+                                            }
+
+                                        }
+                                        foreach (var d in decisoes.Mao) //Se não tivermos, colocar em MT
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+                                            if (d.Dinossauro == Dinossauro.TI)
+                                                continue;
+
+                                            if (PossoColocarNoCercado(decisoes, Cercados.MT, d.Dinossauro))
+                                                return (d.Dinossauro, Cercados.MT);
+                                        }
+
+                                    }
+
+                                }
+
+                                foreach (var d in decisoes.Mao) //Em ultimo caso....
+                                {
+                                    if (d.QuantidadeDinossauros == 0)
+                                        continue;
+
+                                    if (d.Dinossauro == Dinossauro.TI)
+                                        continue;
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.RI, d.Dinossauro))
+                                        return (d.Dinossauro, Cercados.RI); //Colocar no rio
+                                }
+                            }
                         }
-                        else //Não jogamos o dado
+                        else //NAO JOGAMOS O DADO
                         {
                             if (decisoes.DadoAtual == Dado.FL)
                             {
-                                if(TenhoDinoReiDaSelva(decisoes))
+                                if (TenhoDinoReiDaSelva(decisoes))
                                 {
                                     var cercadoEspecificoRS = decisoes.Cercados.Find(c => c.Cercados == Cercados.RS);
                                     var dinoReiSelva = cercadoEspecificoRS.Dinossauros[0];
@@ -189,22 +251,184 @@ namespace Extintos.Model
                                         if (d.Dinossauro == Dinossauro.TI)
                                             continue;
 
-                                    if (PossoColocarNoCercado(decisoes, Cercados.MT, d.Dinossauro)) //Posso botar na mata tripla?
-                                    {
-                                        return (d.Dinossauro, Cercados.MT);
+                                        if (PossoColocarNoCercado(decisoes, Cercados.MT, d.Dinossauro)) //Posso botar na mata tripla?
+                                        {
+                                            return (d.Dinossauro, Cercados.MT);
+                                        }
+                                        else //Se nao der, joga no rio
+                                        {
+                                            return (d.Dinossauro, Cercados.RI);
+                                        }
+
                                     }
-                                    else //Se nao der, joga no rio
+
+                                }
+                            }
+                            if (decisoes.DadoAtual == Dado.WC)
+                            {
+                                if (!TemDinoNoCercado(decisoes, Cercados.CD))
+                                {
+                                    foreach (var d in decisoes.Mao) //procura algum dino para colocar 
                                     {
-                                        return (d.Dinossauro, Cercados.RI);
+                                        if (d.QuantidadeDinossauros == 0)
+                                            continue;
+
+                                        if (d.Dinossauro == Dinossauro.TI)
+                                            continue;
+
+                                        return (d.Dinossauro, Cercados.CD);
+                                    }
+                                }
+                                else // ja tem algum dino na campina da diferença
+                                {
+                                    var cercadoEspecificoCD = decisoes.Cercados.Find(c => c.Cercados == Cercados.CD);
+
+                                    if (cercadoEspecificoCD != null)
+                                    {
+                                        foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+
+                                            if (d.Dinossauro == Dinossauro.TI)
+                                            {
+                                                if (PossoColocarNoCercado(decisoes, Cercados.IS, d.Dinossauro))
+                                                    return (d.Dinossauro, Cercados.IS);
+
+                                                continue;
+
+                                            }
+
+                                            if (!cercadoEspecificoCD.Dinossauros.Contains(d.Dinossauro))
+                                            {
+                                                return (d.Dinossauro, Cercados.CD);
+                                            }
+
+                                        }
+
                                     }
 
                                 }
 
-                            }
-                            if (decisoes.DadoAtual == Dado.WC)
-                            {
-                                if(!TemDinoNoCercado(decisoes, Cercados.CD))
+                                foreach (var d in decisoes.Mao) //Em ulitmo caso....
                                 {
+                                    if (d.QuantidadeDinossauros > 0)
+                                        return (d.Dinossauro, Cercados.RI); //Colocar no rio
+                                }
+                            }
+
+
+                            if (decisoes.DadoAtual == Dado.VZ)
+                            {
+                                if (TenhoDinoReiDaSelva(decisoes))
+                                {
+                                    var cercadoEspecificoRS = decisoes.Cercados.Find(c => c.Cercados == Cercados.RS);
+                                    var dinoReiSelva = cercadoEspecificoRS.Dinossauros[0];
+
+                                    // 1ª prioridade: floresta da igualdade vazia
+                                    if (!TemDinoNoCercado(decisoes, Cercados.FI) &&
+                                        PossoColocarNoCercado(decisoes, Cercados.FI, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.FI);
+
+                                    // 2ª prioridade: pradaria do amor vazia
+                                    if (!TemDinoNoCercado(decisoes, Cercados.PA) &&
+                                        PossoColocarNoCercado(decisoes, Cercados.PA, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.PA);
+
+                                    // 3ª prioridade: qlqr outro cercado vazio que dê pra colocar o rei da selva
+                                    if (!TemDinoNoCercado(decisoes, Cercados.CD) &&
+                                        PossoColocarNoCercado(decisoes, Cercados.CD, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.CD);
+
+                                    if (!TemDinoNoCercado(decisoes, Cercados.MT) &&
+                                        PossoColocarNoCercado(decisoes, Cercados.MT, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.MT);
+                                    // ultima prioridade: o rio.....
+                                    if (!TemDinoNoCercado(decisoes, Cercados.RI) &&
+                                    PossoColocarNoCercado(decisoes, Cercados.RI, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.RI);
+
+
+                                }
+                                else //nao tenho o dino rei da selva
+                                {
+                                    if (!TemDinoNoCercado(decisoes, Cercados.CD)) //Campina da diferença ta vazio
+                                    {
+                                        foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+
+                                            if (d.Dinossauro == Dinossauro.TI) //Se tivermos o tiranossauro na mao..
+                                            {
+                                                if (!TemDinoNoCercado(decisoes, Cercados.IS) &&
+                                                PossoColocarNoCercado(decisoes, Cercados.IS, d.Dinossauro)) //Se ilha solitaria n tiver o tiranossauro ainda, colocar.
+                                                    return (d.Dinossauro, Cercados.IS);
+
+                                                else
+                                                {
+                                                    continue;
+                                                }
+                                            }
+                                            else //Se NAO tivermos o tiranossauro na mao...
+                                            {
+                                                if (PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro))
+                                                    return (d.Dinossauro, Cercados.CD);  //Colocar na campina da diferença
+                                            }
+
+                                        }
+                                    }
+                                    else //Campina da diferença NAO ta vazio
+                                    {
+                                        foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+                                            if (!TemDinoNoCercado(decisoes, Cercados.MT) &&
+                                            PossoColocarNoCercado(decisoes, Cercados.MT, d.Dinossauro)) //Se mata tripla tiver vazio, colocar
+                                            {
+                                                return (d.Dinossauro, Cercados.MT);
+                                            }
+                                        }
+
+                                        foreach (var d in decisoes.Mao) //Em ultimo caso....
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+                                            if (!TemDinoNoCercado(decisoes, Cercados.RI) &&
+                                                PossoColocarNoCercado(decisoes, Cercados.RI, d.Dinossauro)) //Se o rio tiver vazio, colocar.
+                                            {
+                                                return (d.Dinossauro, Cercados.RI);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (decisoes.DadoAtual == Dado.TI)
+                            {
+                                if (TenhoDinoReiDaSelva(decisoes))
+                                {
+                                    var cercadoEspecificoRS = decisoes.Cercados.Find(c => c.Cercados == Cercados.RS);
+                                    var dinoReiSelva = cercadoEspecificoRS.Dinossauros[0];
+
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.FI, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.FI);
+
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.PA, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.PA);
+                                }
+                                else //nao tenho o dino rei da selva
+                                {
+
+                                    if (!TemDinoNoCercado(decisoes, Cercados.CD)) //Campina da diferença ta vazio?
+                                    {
                                         foreach (var d in decisoes.Mao) //procura algum dino para colocar 
                                         {
                                             if (d.QuantidadeDinossauros == 0)
@@ -213,58 +437,228 @@ namespace Extintos.Model
                                             if (d.Dinossauro == Dinossauro.TI)
                                                 continue;
 
-                                            return (d.Dinossauro, Cercados.CD);
+                                            if (PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro))
+                                                return (d.Dinossauro, Cercados.CD);
                                         }
+                                    }
+                                    else  //Campina da diferença nao ta vazio
+                                    {
+                                        var cercadoEspecificoCD = decisoes.Cercados.Find(c => c.Cercados == Cercados.CD);
+
+                                        if (cercadoEspecificoCD != null)
+                                        {
+                                            foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                            {
+                                                if (d.QuantidadeDinossauros == 0)
+                                                    continue;
+
+                                                if (d.Dinossauro == Dinossauro.TI)
+                                                {
+                                                    if (PossoColocarNoCercado(decisoes, Cercados.IS, d.Dinossauro))
+                                                        return (d.Dinossauro, Cercados.IS);
+
+                                                    continue;
+
+                                                }
+
+                                                if (!cercadoEspecificoCD.Dinossauros.Contains(d.Dinossauro) &&
+                                                    PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro)) //Temos na mão algum outro dino que dê pra colocar na CD?
+                                                {
+                                                    return (d.Dinossauro, Cercados.CD);
+                                                }
+
+                                            }
+                                            foreach (var d in decisoes.Mao) //Se não tivermos, colocar em MT
+                                            {
+                                                if (d.QuantidadeDinossauros == 0)
+                                                    continue;
+
+                                                if (d.Dinossauro == Dinossauro.TI)
+                                                    continue;
+
+                                                if (PossoColocarNoCercado(decisoes, Cercados.MT, d.Dinossauro))
+                                                    return (d.Dinossauro, Cercados.MT);
+                                            }
+
+                                        }
+
+                                    }
+
+                                    foreach (var d in decisoes.Mao) //Em ultimo caso....
+                                    {
+                                        if (d.QuantidadeDinossauros == 0)
+                                            continue;
+
+                                        if (d.Dinossauro == Dinossauro.TI)
+                                            continue;
+
+                                        if (PossoColocarNoCercado(decisoes, Cercados.RI, d.Dinossauro))
+                                            return (d.Dinossauro, Cercados.RI); //Colocar no rio
+                                    }
                                 }
-                                else // ja tem algum dino na campina da diferença
-                                {
-                                
-
-                                }
-
                             }
-                            if (decisoes.DadoAtual == Dado.VZ)
-                            {
 
-                            }
-                            if (decisoes.DadoAtual == Dado.TI)
-                            {
-
-                            }
                             if (decisoes.DadoAtual == Dado.PR)
                             {
+                                if (TenhoDinoReiDaSelva(decisoes))
+                                {
+                                    var cercadoEspecificoRS = decisoes.Cercados.Find(c => c.Cercados == Cercados.RS);
+                                    var dinoReiSelva = cercadoEspecificoRS.Dinossauros[0];
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.PA, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.PA);
+
+                                    //Apenas segurança, caso não dê para colocar em PA direto..
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.CD, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.CD);
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.RI, dinoReiSelva))
+                                        return (dinoReiSelva, Cercados.RI);
+                                }
+
+                                else { //Não tenho o dino rei da selva
+
+                                    if (!TemDinoNoCercado(decisoes, Cercados.CD)) //Se campina da diferença está vazia
+                                    {
+                                        foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                        {
+                                            if (d.QuantidadeDinossauros == 0)
+                                                continue;
+
+                                            if (d.Dinossauro == Dinossauro.TI)
+                                                continue;
+
+                                            if (PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro))
+                                                return (d.Dinossauro, Cercados.CD); //Coloca na campina da diferenca
+                                        }
+                                    }
+                                    else // ja tem algum dino na campina da diferença
+                                    {
+                                        var cercadoEspecificoCD = decisoes.Cercados.Find(c => c.Cercados == Cercados.CD);
+
+                                        if (cercadoEspecificoCD != null)
+                                        {
+                                            foreach (var d in decisoes.Mao) //procura algum dino para colocar 
+                                            {
+                                                if (d.QuantidadeDinossauros == 0)
+                                                    continue;
+
+
+                                                if (d.Dinossauro == Dinossauro.TI) //Se tivermos o tiranossauro na mao...
+                                                {
+                                                    if (!TemDinoNoCercado(decisoes, Cercados.IS) &&
+                                                    PossoColocarNoCercado(decisoes, Cercados.IS, d.Dinossauro)) //Se ilha solitaria n tiver o tiranossauro ainda, colocar.
+                                                        return (d.Dinossauro, Cercados.IS);
+
+                                                    continue;
+                                                }
+
+                                                if (!cercadoEspecificoCD.Dinossauros.Contains(d.Dinossauro)) 
+                                                {
+                                                    if (PossoColocarNoCercado(decisoes, Cercados.CD, d.Dinossauro))
+                                                        return (d.Dinossauro, Cercados.CD); 
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    foreach (var d in decisoes.Mao) //Em ulitmo caso....
+                                    {
+                                        if (d.QuantidadeDinossauros == 0)
+                                            continue;
+
+                                        if (d.Dinossauro == Dinossauro.TI)
+                                            continue;
+
+                                        if (PossoColocarNoCercado(decisoes, Cercados.RI, d.Dinossauro))
+                                            return (d.Dinossauro, Cercados.RI); //Colocar no rio
+                                    }
+                                }
 
                             }
                             if (decisoes.DadoAtual == Dado.AL)
                             {
+                                if (TenhoDinoReiDaSelva(decisoes))
+                                {
+                                    var cercadoEspecificoRS = decisoes.Cercados.Find(c => c.Cercados == Cercados.RS);
+                                    var dinoReiSelva = cercadoEspecificoRS.Dinossauros[0];
 
+                                    if (PossoColocarNoCercado(decisoes, Cercados.FI, dinoReiSelva ))
+                                    {
+                                        return (dinoReiSelva, Cercados.FI);
+                                    }
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.PA, dinoReiSelva))
+                                    {
+                                        return (dinoReiSelva, Cercados.PA);
+                                    }
+
+                                    if (PossoColocarNoCercado(decisoes, Cercados.RI, dinoReiSelva))
+                                    {
+                                        return (dinoReiSelva, Cercados.RI);
+                                    }
+
+                                }
+
+                                else //Nao tenho o rei da selva
+                                {
+                                    foreach (var d in decisoes.Mao)
+                                    {
+                                        if (d.QuantidadeDinossauros == 0)
+                                            continue;
+
+                                        if (d.Dinossauro == Dinossauro.TI)
+                                            continue;
+
+                                        if (PossoColocarNoCercado(decisoes, Cercados.MT, d.Dinossauro))
+                                            return (d.Dinossauro, Cercados.MT);
+                                     }
+
+                                    foreach (var d in decisoes.Mao) //Em ulitmo caso....
+                                    {
+                                        if (d.QuantidadeDinossauros == 0)
+                                            continue;
+
+                                        if (d.Dinossauro == Dinossauro.TI)
+                                            continue;
+
+                                        if (PossoColocarNoCercado(decisoes, Cercados.RI, d.Dinossauro))
+                                            return (d.Dinossauro, Cercados.RI); //Colocar no rio
+                                    }
+
+                                }
                             }
-
                         }
-
-
-
-
-
-
-                        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     }
-            }
+
+
+
+
+
+
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
+  
+
+//Fazer uma função desses foreach

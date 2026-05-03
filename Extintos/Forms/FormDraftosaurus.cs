@@ -250,8 +250,28 @@ var jogada = estrategias.ReiDaSelva(estado);
 
 
 
-// Mao = ObterMao(),
-//Cercados = CercadosExtension.CercadoAuxLista(),
-// DadoAtual = dadoAtual,
-//NumeroTurno = verificacao.numeroTurno,
-//JogueioDado = verificacao.idJogador == _dadosJogador.IdJogador
+
+
+
+/*
+ DecisoesTurno decisoes = new DecisoesTurno{
+    Mao = ObterMao(),
+    Cercados = ObterCercadosDoJogador(),
+    DadoAtual = dadoAtual,
+    NumeroTurno = verificacao.numeroTurno,
+    JogueioDado = verificacao.idJogador == _dadosJogador.IdJogador
+}; */
+
+/* 
+Estrategias estrategias = new Estrategias();
+
+var (dino, cercado) = estrategias.ReidaSelva(decisoes);
+
+string retorno = Jogo.Jogar(
+    _dadosJogador.IdJogador,
+    _dadosJogador.Senha,
+    dino.PegaCodigo(),
+    cercado.ToString()
+);
+
+*/
